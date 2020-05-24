@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+  <meta charset="UTF-8">
+  <title>CodePen - 線上互動繪本 介面設計說明</title>
+  <link rel="stylesheet" href="./style.css">
+
+</head>
+<body>
+<!-- partial:index.partial.html -->
+<div class="page">
+  <header>
+    <h1>線上互動繪本 介面設計說明</h1>
+    <p>From: 魚肚白設計 2020/05/24</p>
+  </header>
+  <div class="content-wrapper">
+    <h3>前言</h3>
+    <p>為了因應此次線上繪本 <b>一頁一頁翻動</b> 的操作形式（參考：<a href="https://thebearandhisscarf.com/" target="_blank">The Bear And His Scarf</a>），也為了保持畫面內容的排版和固定比例，能因應市面上 <b>多元的螢幕尺寸及比例</b>，都有自然而舒暢的瀏覽體驗。不希望只單純用上下／左右留空的作法，見下圖一；或直接切除上下／左右的作法，見下圖二。故魚肚白設計在此提出介面設計想法，希望邀請二三設計的設計師夥伴一起嘗試。</p>
+    <div class="example-situations-wrapper">
+      <div class="example-situations">
+        <p class="note-of-green-frame"><span></span> 綠框為螢幕邊界</p>
+        <div class="example-situaltion">
+          <div class="image-wrapper image-1"><img src="https://images.unsplash.com/photo-1588952598585-f5fc22f214e7?ixlib=rb-1.2.1&amp;q=80&amp;fm=jpg&amp;crop=entropy&amp;cs=tinysrgb&amp;w=400&amp;fit=max&amp;ixid=eyJhcHBfaWQiOjE0NTg5fQ" alt=""/></div>
+          <p>圖一（上下／左右留空）<br/><b>缺點</b>：在較長（如直式平板）或較寬（如寬型桌機螢幕）的狀況下會露出過多留白空間</p>
+        </div>
+        <div class="example-situaltion">
+          <div class="image-wrapper image-2"><img src="https://images.unsplash.com/photo-1588952598585-f5fc22f214e7?ixlib=rb-1.2.1&amp;q=80&amp;fm=jpg&amp;crop=entropy&amp;cs=tinysrgb&amp;w=400&amp;fit=max&amp;ixid=eyJhcHBfaWQiOjE0NTg5fQ" alt=""/></div>
+          <p>圖二（上下／左右切除）<br/><b>缺點</b>：在較長（如直式平板）或較寬（如寬型桌機螢幕）的狀況下可能會被切除重要的文字或角色畫面</p>
+        </div>
+      </div>
+    </div>
+    <h3>解法概念說明</h3>
+    <p>搭配下圖來看，在製作一頁繪本畫面時會有兩個主要概念，分別是「重要畫面」，每一種螢幕尺寸比例都能完整看到的畫面；與「次要畫面」，因應不同螢幕比例，可能較寬或較長的畫面準備的緩衝區域。</p>
+    <div class="canvas-wrapper">
+      <div class="canvas">
+        <div class="main-canvas-wrapper">
+          <div class="main-canvas"></div>
+        </div>
+      </div>
+    </div>
+    <p>需要設計師在思考畫面元素時，將<b>繪本重要的畫面（ex 文字、角色頭部、重要物件）安排在紅框內；同時將畫面延伸至紅框與藍框的淺灰色區塊，以延伸繪本邊界的彈性</b>，見下圖範例。</p>
+    <div class="canvas-wrapper show-mode">
+      <div class="canvas">
+        <div class="main-canvas-wrapper">
+          <div class="main-canvas">
+            <svg class="bicycle-1" width="24" height="24" viewBox="0 0 24 24">
+              <path d="M5,20.5A3.5,3.5 0 0,1 1.5,17A3.5,3.5 0 0,1 5,13.5A3.5,3.5 0 0,1 8.5,17A3.5,3.5 0 0,1 5,20.5M5,12A5,5 0 0,0 0,17A5,5 0 0,0 5,22A5,5 0 0,0 10,17A5,5 0 0,0 5,12M14.8,10H19V8.2H15.8L13.86,4.93C13.57,4.43 13,4.1 12.4,4.1C11.93,4.1 11.5,4.29 11.2,4.6L7.5,8.29C7.19,8.6 7,9 7,9.5C7,10.13 7.33,10.66 7.85,10.97L11.2,13V18H13V11.5L10.75,9.85L13.07,7.5M19,20.5A3.5,3.5 0 0,1 15.5,17A3.5,3.5 0 0,1 19,13.5A3.5,3.5 0 0,1 22.5,17A3.5,3.5 0 0,1 19,20.5M19,12A5,5 0 0,0 14,17A5,5 0 0,0 19,22A5,5 0 0,0 24,17A5,5 0 0,0 19,12M16,4.8C17,4.8 17.8,4 17.8,3C17.8,2 17,1.2 16,1.2C15,1.2 14.2,2 14.2,3C14.2,4 15,4.8 16,4.8Z"></path>
+            </svg>
+            <svg class="bicycle-2" width="24" height="24" viewBox="0 0 24 24">
+              <path d="M5,20.5A3.5,3.5 0 0,1 1.5,17A3.5,3.5 0 0,1 5,13.5A3.5,3.5 0 0,1 8.5,17A3.5,3.5 0 0,1 5,20.5M5,12A5,5 0 0,0 0,17A5,5 0 0,0 5,22A5,5 0 0,0 10,17A5,5 0 0,0 5,12M14.8,10H19V8.2H15.8L13.86,4.93C13.57,4.43 13,4.1 12.4,4.1C11.93,4.1 11.5,4.29 11.2,4.6L7.5,8.29C7.19,8.6 7,9 7,9.5C7,10.13 7.33,10.66 7.85,10.97L11.2,13V18H13V11.5L10.75,9.85L13.07,7.5M19,20.5A3.5,3.5 0 0,1 15.5,17A3.5,3.5 0 0,1 19,13.5A3.5,3.5 0 0,1 22.5,17A3.5,3.5 0 0,1 19,20.5M19,12A5,5 0 0,0 14,17A5,5 0 0,0 19,22A5,5 0 0,0 24,17A5,5 0 0,0 19,12M16,4.8C17,4.8 17.8,4 17.8,3C17.8,2 17,1.2 16,1.2C15,1.2 14.2,2 14.2,3C14.2,4 15,4.8 16,4.8Z"></path>
+            </svg>
+            <svg class="people" width="24" height="24" viewBox="0 0 24 24">
+              <path d="M21,9H15V22H13V16H11V22H9V9H3V7H21M12,2A2,2 0 0,1 14,4A2,2 0 0,1 12,6C10.89,6 10,5.1 10,4C10,2.89 10.89,2 12,2Z"></path>
+            </svg>
+            <svg class="cloude-1" width="24" height="24" viewBox="0 0 24 24">
+              <path d="M19.35,10.03C18.67,6.59 15.64,4 12,4C9.11,4 6.6,5.64 5.35,8.03C2.34,8.36 0,10.9 0,14A6,6 0 0,0 6,20H19A5,5 0 0,0 24,15C24,12.36 21.95,10.22 19.35,10.03Z"></path>
+            </svg>
+            <svg class="cloude-2" width="24" height="24" viewBox="0 0 24 24">
+              <path d="M19.35,10.03C18.67,6.59 15.64,4 12,4C9.11,4 6.6,5.64 5.35,8.03C2.34,8.36 0,10.9 0,14A6,6 0 0,0 6,20H19A5,5 0 0,0 24,15C24,12.36 21.95,10.22 19.35,10.03Z"></path>
+            </svg>
+            <svg class="cloude-3" width="24" height="24" viewBox="0 0 24 24">
+              <path d="M19.35,10.03C18.67,6.59 15.64,4 12,4C9.11,4 6.6,5.64 5.35,8.03C2.34,8.36 0,10.9 0,14A6,6 0 0,0 6,20H19A5,5 0 0,0 24,15C24,12.36 21.95,10.22 19.35,10.03Z"></path>
+            </svg>
+            <svg class="cloude-4" width="24" height="24" viewBox="0 0 24 24">
+              <path d="M19.35,10.03C18.67,6.59 15.64,4 12,4C9.11,4 6.6,5.64 5.35,8.03C2.34,8.36 0,10.9 0,14A6,6 0 0,0 6,20H19A5,5 0 0,0 24,15C24,12.36 21.95,10.22 19.35,10.03Z"></path>
+            </svg>
+            <svg class="emotion" width="24" height="24" viewBox="0 0 24 24">
+              <path d="M23,12L20.56,9.22L20.9,5.54L17.29,4.72L15.4,1.54L12,3L8.6,1.54L6.71,4.72L3.1,5.53L3.44,9.21L1,12L3.44,14.78L3.1,18.47L6.71,19.29L8.6,22.47L12,21L15.4,22.46L17.29,19.28L20.9,18.46L20.56,14.78L23,12M13,17H11V15H13V17M13,13H11V7H13V13Z"></path>
+            </svg>
+            <div class="text text-1"></div>
+            <div class="text text-2"></div>
+            <div class="text text-3"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <h3>應用方式</h3>
+    <p>實際應用方式分兩部分，「螢幕寬度768px(含)以上」與「螢幕寬度768px以下」。</p>
+    <p><b>螢幕寬度768px(含)以上</b>：繪本頁面的 <b>紅框</b> 部分，會切齊裝置的 <b>上下</b> 或 <b>左右</b> (視螢幕比例而定)。</p>
+    <p><b>螢幕寬度768px以下</b>：繪本 <b>紅框</b> 之外的畫面會被切除，並切齊裝置的左右兩側。繪本操作方式切換為一般滾動瀏覽，並將故事內的文字移出，與繪本畫面交替列出（範例參考：<a href="https://thebearandhisscarf.com/" target="_blank">The Bear And His Scarf</a>，請使用螢幕寬度768px以下檢視）。</p>
+    <p>（上述文字還沒有看懂沒關係，可以直接進到下一步的模擬器，觀看應用模擬畫面。）</p>
+    <h3>模擬器</h3>
+    <p>抓出台灣使用者分別在手機、平板、桌機三個項目中最常使用的前 4-5 名螢幕尺寸（參考自 Statcounter 的公開資料），並將相近比例整併，搭配這次的介面規劃構想，模擬呈現如下。</p>
+    <p>請點擊按鈕以切換不同螢幕比例（768px↑灰底按紐／768↓黑底按鈕）</p>
+    <div class="buttons">
+      <button data-space="177.778" data-type="horizontal" data-mode="full">桌機 1920*1080</button>
+      <button data-space="160" data-type="horizontal" data-mode="full">桌機 1440*900</button><br/>
+      <button data-space="133.333" data-type="horizontal" data-mode="full">平板(橫式) 1024*768</button>
+      <button data-space="133.333" data-type="vertical" data-mode="full">平板(直式) 768*1024</button>
+      <button data-space="160.067" data-type="horizontal" data-mode="full">平板(橫式) 962*601</button>
+      <button data-space="160.067" data-type="vertical" data-mode="mobile">平板(直式) 601*962</button><br/>
+      <button data-space="177.778" data-type="horizontal" data-mode="mobile">手機(橫式) 640*360</button>
+      <button data-space="177.778" data-type="vertical" data-mode="mobile">手機(直式) 360*640</button>
+      <button data-space="216.533" data-type="horizontal" data-mode="full">手機(橫式) 896*414</button>
+      <button data-space="216.533" data-type="vertical" data-mode="mobile">手機(直式) 414*896</button>
+    </div>
+    <p id="current-device">目前選擇的裝置：<span>桌機 1920*1080</span></p>
+    <p class="note-of-green-frame"><span></span> 綠框為螢幕邊界</p>
+    <div class="horizontal" id="device-screen">
+      <div class="space"></div>
+      <div class="canvas-wrapper show-mode">
+        <div class="canvas">
+          <div class="main-canvas-wrapper">
+            <div class="main-canvas">
+              <svg class="bicycle-1" width="24" height="24" viewBox="0 0 24 24">
+                <path d="M5,20.5A3.5,3.5 0 0,1 1.5,17A3.5,3.5 0 0,1 5,13.5A3.5,3.5 0 0,1 8.5,17A3.5,3.5 0 0,1 5,20.5M5,12A5,5 0 0,0 0,17A5,5 0 0,0 5,22A5,5 0 0,0 10,17A5,5 0 0,0 5,12M14.8,10H19V8.2H15.8L13.86,4.93C13.57,4.43 13,4.1 12.4,4.1C11.93,4.1 11.5,4.29 11.2,4.6L7.5,8.29C7.19,8.6 7,9 7,9.5C7,10.13 7.33,10.66 7.85,10.97L11.2,13V18H13V11.5L10.75,9.85L13.07,7.5M19,20.5A3.5,3.5 0 0,1 15.5,17A3.5,3.5 0 0,1 19,13.5A3.5,3.5 0 0,1 22.5,17A3.5,3.5 0 0,1 19,20.5M19,12A5,5 0 0,0 14,17A5,5 0 0,0 19,22A5,5 0 0,0 24,17A5,5 0 0,0 19,12M16,4.8C17,4.8 17.8,4 17.8,3C17.8,2 17,1.2 16,1.2C15,1.2 14.2,2 14.2,3C14.2,4 15,4.8 16,4.8Z"></path>
+              </svg>
+              <svg class="bicycle-2" width="24" height="24" viewBox="0 0 24 24">
+                <path d="M5,20.5A3.5,3.5 0 0,1 1.5,17A3.5,3.5 0 0,1 5,13.5A3.5,3.5 0 0,1 8.5,17A3.5,3.5 0 0,1 5,20.5M5,12A5,5 0 0,0 0,17A5,5 0 0,0 5,22A5,5 0 0,0 10,17A5,5 0 0,0 5,12M14.8,10H19V8.2H15.8L13.86,4.93C13.57,4.43 13,4.1 12.4,4.1C11.93,4.1 11.5,4.29 11.2,4.6L7.5,8.29C7.19,8.6 7,9 7,9.5C7,10.13 7.33,10.66 7.85,10.97L11.2,13V18H13V11.5L10.75,9.85L13.07,7.5M19,20.5A3.5,3.5 0 0,1 15.5,17A3.5,3.5 0 0,1 19,13.5A3.5,3.5 0 0,1 22.5,17A3.5,3.5 0 0,1 19,20.5M19,12A5,5 0 0,0 14,17A5,5 0 0,0 19,22A5,5 0 0,0 24,17A5,5 0 0,0 19,12M16,4.8C17,4.8 17.8,4 17.8,3C17.8,2 17,1.2 16,1.2C15,1.2 14.2,2 14.2,3C14.2,4 15,4.8 16,4.8Z"></path>
+              </svg>
+              <svg class="people" width="24" height="24" viewBox="0 0 24 24">
+                <path d="M21,9H15V22H13V16H11V22H9V9H3V7H21M12,2A2,2 0 0,1 14,4A2,2 0 0,1 12,6C10.89,6 10,5.1 10,4C10,2.89 10.89,2 12,2Z"></path>
+              </svg>
+              <svg class="cloude-1" width="24" height="24" viewBox="0 0 24 24">
+                <path d="M19.35,10.03C18.67,6.59 15.64,4 12,4C9.11,4 6.6,5.64 5.35,8.03C2.34,8.36 0,10.9 0,14A6,6 0 0,0 6,20H19A5,5 0 0,0 24,15C24,12.36 21.95,10.22 19.35,10.03Z"></path>
+              </svg>
+              <svg class="cloude-2" width="24" height="24" viewBox="0 0 24 24">
+                <path d="M19.35,10.03C18.67,6.59 15.64,4 12,4C9.11,4 6.6,5.64 5.35,8.03C2.34,8.36 0,10.9 0,14A6,6 0 0,0 6,20H19A5,5 0 0,0 24,15C24,12.36 21.95,10.22 19.35,10.03Z"></path>
+              </svg>
+              <svg class="cloude-3" width="24" height="24" viewBox="0 0 24 24">
+                <path d="M19.35,10.03C18.67,6.59 15.64,4 12,4C9.11,4 6.6,5.64 5.35,8.03C2.34,8.36 0,10.9 0,14A6,6 0 0,0 6,20H19A5,5 0 0,0 24,15C24,12.36 21.95,10.22 19.35,10.03Z"></path>
+              </svg>
+              <svg class="cloude-4" width="24" height="24" viewBox="0 0 24 24">
+                <path d="M19.35,10.03C18.67,6.59 15.64,4 12,4C9.11,4 6.6,5.64 5.35,8.03C2.34,8.36 0,10.9 0,14A6,6 0 0,0 6,20H19A5,5 0 0,0 24,15C24,12.36 21.95,10.22 19.35,10.03Z"></path>
+              </svg>
+              <svg class="emotion" width="24" height="24" viewBox="0 0 24 24">
+                <path d="M23,12L20.56,9.22L20.9,5.54L17.29,4.72L15.4,1.54L12,3L8.6,1.54L6.71,4.72L3.1,5.53L3.44,9.21L1,12L3.44,14.78L3.1,18.47L6.71,19.29L8.6,22.47L12,21L15.4,22.46L17.29,19.28L20.9,18.46L20.56,14.78L23,12M13,17H11V15H13V17M13,13H11V7H13V13Z"></path>
+              </svg>
+              <div class="text text-1"></div>
+              <div class="text text-2"></div>
+              <div class="text text-3"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <p>相近比例螢幕整併說明：<br/>桌機 1920*1080 比例近似於 1366*768, 1280*720 <br/>平板 1024*768 比例近似於 1112*834 <br/>平板 962*601 比例近似於 1280*800 <br/>手機 640*360 比例近似於 667*375, 736*414 <br/>手機 896*414 比例近似於 812*375</p>
+  </div>
+</div>
+<!-- partial -->
+  <script  src="./script.js"></script>
+
+</body>
+</html>
